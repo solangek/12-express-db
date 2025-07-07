@@ -7,55 +7,73 @@
     <title><%= title %></title>
   </head>
   <body>
-
   <script src="/javascripts/client.js"> </script>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-
-        <h1><%= title %></h1>
-          <p>Populate the database:</p>
-
-        <form action="/action/add" method="post">
-          <div class="field">
-            <label>First Name</label>
-            <div class="control">
-              <input class="input" type="text" name="firstName">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h1 class="card-title text-center mb-4 display-5 fw-bold"><%= title %></h1>
+            <p class="text-muted text-center">Populate the database:</p>
+            <form action="/action/add" method="post" class="mb-4">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">First Name</label>
+                  <input class="form-control" type="text" name="firstName" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Last Name</label>
+                  <input class="form-control" type="text" name="lastName" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone</label>
+                  <input class="form-control" type="text" name="phone">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input class="form-control" type="text" name="email">
+                </div>
+              </div>
+              <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-success btn-lg" type="submit">Save to database</button>
+              </div>
+            </form>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <button class="btn btn-primary btn-lg" id="getdata">Show all DB contents</button>
+              <span class="text-muted">Data will be displayed below:</span>
+            </div>
+            <div id="data" class="mb-4">
+              <!-- Bootstrap Table for DB contents -->
+              <div id="db-table-container" style="display:none;">
+                <div class="table-responsive">
+                  <table class="table table-striped table-hover align-middle" id="db-table">
+                    <thead class="table-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Data rows will be injected by client.js -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- Placeholder for empty state -->
+              <div id="db-empty" class="alert alert-info text-center" style="display:none;">
+                No contacts found in the database.
+              </div>
             </div>
           </div>
-          <div class="field">
-            <label>Last Name</label>
-            <div class="control">
-              <input class="input" type="text" name="lastName">
-            </div>
-          </div>
-          <div class="field">
-            <label>Phone</label>
-            <div class="control">
-              <input class="input" type="text" name="phone">
-            </div>
-          </div>
-          <div class="field">
-            <label>Email</label>
-            <div class="control">
-              <input class="input" type="text" name="email">
-            </div>
-          </div>
-          <div class="field mt-3">
-            <div class="control">
-              <button class="btn btn-lg btn-primary mb-1"  type="submit" class="button is-success">Save to database</button>
-            </div>
-          </div>
-        </form>
-
-          <button class="btn btn-lg btn-primary mb-1"  id="getdata">Show all DB contents</button>
-          <p>Data will be displayed below:</p>
-          <span id="data">
-          </span>
-
-  <h3>Instruction for creating a sqlite project</h3>
-  <pre>
+        </div>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">Instruction for creating a sqlite project</h3>
+            <pre class="bg-light p-3 rounded small">
 steps required to create a sqlite / sequelize project:
 
 1/  npm install --save express sequelize sqlite3
@@ -88,14 +106,12 @@ const Contact = require('../models/contact');
 
 It will create and use a SQLite database file called database.sqlite3 in the root of the project.
 You can delete this file to start over the database.
-
-
-  </pre>
+            </pre>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
-

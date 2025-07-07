@@ -13,6 +13,19 @@ var router = express.Router();
 
 const Contact = require('../models/contact').Contact;
 
+/* note the RESTful API design:
+GET /api/contacts - Retrieve all contacts
+POST /api/contacts - Create a new contact
+PUT /api/contacts/:id - Update a contact by ID
+DELETE /api/contacts/:id - Delete a contact by ID
+GET /api/contacts/:lastName - Retrieve contacts by last name
+
+ examples of what you should NOT do:
+GET /api/contacts/all - Retrieve all contacts (not RESTful, use /api/contacts)
+GET /api/contacts/create - Create a new contact (not RESTful, use POST /api/contacts)
+GET /api/updatecontact - Update a contact (not RESTful, use PUT /api/contacts/:id)
+
+ */
 
 router.get('/contacts', (req, res) => {
     return Contact.findAll()
@@ -38,7 +51,7 @@ router.post('/contacts', (req, res) => {
     return Contact.create({ firstName, lastName, phone })
         .then((contact) => res.status(201).send(contact))
         .catch((err) => {
-            console.log('*** error creating a contact', JSON.stringify(contact))
+            console.log('*** error creating a contact', JSON.stringify(err))
             return res.status(400).send(err)
         })
 });
@@ -58,7 +71,7 @@ router.delete('/contacts/:id', (req, res) => {
 DELETE with url : http://localhost:3000/api/contacts/1
  */
 router.put('/contacts/:id', (req, res) => {
-    const id = parseInt(req.params.id)
+    const id = parseInt(req.params.id);
     return Contact.findByPk(id)
         .then((contact) => {
             const { firstName, lastName, phone } = req.body

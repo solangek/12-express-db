@@ -27,6 +27,7 @@ const Contact = sequelize.define('Contact', {
   }
 }, {
   modelName: 'Contact',
+  paranoid: true, // enables soft delete
 });
 
 Contact.hasMany(Order, {
