@@ -1,8 +1,10 @@
 # 12-express-sqlite
 
-A sample sqlite project allowing saving Contact cards into a database, using Sequelize ORM with SQLite, and Express.
+A sample sqlite/mariadb project allowing saving Contact cards into a database, using Sequelize ORM with SQLite, and Express.
 
-1. npm install --save express sequelize sqlite3
+1. install packages:
+- for sqlite: npm install --save express sequelize sqlite3
+- for mariadb: npm install --save express sequelize mariadb
 
 2. if needed edit the file models/index.js and replace your own DB configuration.
 in this course we use SQLite, so the configuration will look like this:
