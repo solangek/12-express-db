@@ -22,14 +22,10 @@ const handleForm = async (req, res) => {
 }
 
 const showForm = (req, res) => {
-    res.redirect('/'); // redirect to the home page
-
-    // or...render a html page, but what would be the difference?
-    // res.render(...);
-    //
-    // the difference is that the user would see the URL of the form submission in the browser
-    // and if they refresh the page, the form would be submitted again.
-    // redirect is a better choice in this case since it prevents the user from accidentally inserting the same data twice
+    // Redirect to the home page (Post-Redirect-Get pattern)
+    // This prevents duplicate submissions when the user refreshes the page
+    // Without redirect, refreshing would resubmit the form data
+    res.redirect('/');
 }
 
 module.exports = { handleForm, showForm };
