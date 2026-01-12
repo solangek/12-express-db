@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title><%= title %></title>
   </head>
   <body>
@@ -70,48 +70,9 @@
             </div>
           </div>
         </div>
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h3 class="card-title">Instruction for creating a sqlite project</h3>
-            <pre class="bg-light p-3 rounded small">
-steps required to create a sqlite / sequelize project:
-
-1/  npm install --save express sequelize sqlite3
-
-2/ if needed edit the file models/index.js and replace your own DB configuration.
-in this course we use SQLite, so the configuration will look like this:
-
-  "development": {
-    "dialect": "sqlite",
-    "storage": "./database.sqlite3"
-  }
-
-3/ import the Model classes where needed in your code depending on the export of the model file.
-    In this example, the model file is called contact.js and the model class is called Contact.
-
-const Contact = require('../models/contact');
-
-4/ in app.js we connect and sync the database with the following code :
-
-(async () => {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-    await sequelize.sync();
-    console.log('All models were synchronized successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-})();
-
-It will create and use a SQLite database file called database.sqlite3 in the root of the project.
-You can delete this file to start over the database.
-            </pre>
-          </div>
-        </div>
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
